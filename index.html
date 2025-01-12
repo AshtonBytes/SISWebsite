@@ -1,4 +1,13 @@
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "pEghdoNkMhOxtY1lf",
+      });
+   })();
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,8 +84,6 @@
         <p class="privacy">We respect your privacy. Your information will never be shared.</p>
     </div>
     <script>
-        emailjs.init('pEghdoNkMhOxtY1lf'); // Replace with your EmailJS public key
-
         document.getElementById('send-button').addEventListener('click', function() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;

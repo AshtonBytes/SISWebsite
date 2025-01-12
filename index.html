@@ -1,3 +1,23 @@
+<script src="https://cdn.emailjs.com/dist/email.min.js">
+  emailjs.init('pEghdoNkMhOxtY1lf'); // Replace with your EmailJS public key
+
+  document.getElementById('send-button').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+
+      const templateParams = {
+          name: name,
+          phone: phone,
+      };
+
+      emailjs.send('service_skv5n3n', 'template_b17f6ig', templateParams)
+          .then(function(response) {
+              alert('Form submitted successfully!');
+          }, function(error) {
+              alert('Failed to send form. Please try again.');
+          });
+  });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,10 +86,10 @@
     <div class="container">
         <h1>Stay Updated</h1>
         <p>Sign up to receive messages and alerts directly to your phone.</p>
-        <form action="/submit" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-            <button type="submit">Sign Up</button>
+        <form id="contact-form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+            <button type="button" id="send-button">Sign Up</button>
         </form>
         <p class="privacy">We respect your privacy. Your information will never be shared.</p>
     </div>

@@ -97,7 +97,7 @@
                 alert('Form submitted successfully!');
                 console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
-                alert('Failed to send form. Please try again.');
+                alert('Failed to send form. Please try again.\nError: ${error.text || error}');
                 console.error('FAILED...', error);
             });
         });

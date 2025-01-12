@@ -1,23 +1,4 @@
-<script src="https://cdn.emailjs.com/dist/email.min.js">
-  emailjs.init('pEghdoNkMhOxtY1lf'); // Replace with your EmailJS public key
-
-  document.getElementById('send-button').addEventListener('click', function() {
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-
-      const templateParams = {
-          name: name,
-          phone: phone,
-      };
-
-      emailjs.send('service_skv5n3n', 'template_b17f6ig', templateParams)
-          .then(function(response) {
-              alert('Form submitted successfully!');
-          }, function(error) {
-              alert('Failed to send form. Please try again.');
-          });
-  });
-</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,5 +74,33 @@
         </form>
         <p class="privacy">We respect your privacy. Your information will never be shared.</p>
     </div>
+    <script>
+        emailjs.init('pEghdoNkMhOxtY1lf'); // Replace with your EmailJS public key
+
+        document.getElementById('send-button').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+        // Validate inputs
+        if (!name || !phone) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+        const templateParams = {
+            name: name,
+            phone: phone,
+        };      
+
+        emailjs.send('service_skv5n3n', 'template_b17f6ig', templateParams)
+            .then(function(response) {
+                alert('Form submitted successfully!');
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                alert('Failed to send form. Please try again.');
+                console.error('FAILED...', error);
+            });
+        });
+    </script>
 </body>
 </html>
